@@ -16,6 +16,16 @@ body {
     color: #F9FAF8;
 }
 
+.footer {
+    background-color: #1F2937;
+    padding: 0 16px;
+    height: 72px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #F9FAF8;
+    font-size: 12px;
+}
 .content {
     flex: 1;
     display: flex;
