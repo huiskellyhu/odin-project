@@ -4,6 +4,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    
 }
 
 .header {
@@ -59,11 +60,19 @@ a {
     justify-content: center;
     align-items: center;
     padding-bottom: 60px;
+    
 }
 
 .hero img{
     width: 500px;
     height: 200px;
+}
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;          /* centers the content */
+  padding: 0 24px;         /* keeps padding on the sides */
+  box-sizing: border-box;  /* ensures padding doesn’t increase total width */
 }
 
 .container h1 {
@@ -94,8 +103,7 @@ button {
     cursor:pointer;
 }
 
-.information{
-    width: 100%;
+.information .container{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -109,16 +117,16 @@ button {
     color: #1F2937;
 }
 
-.cards {
-    width: 60%;
+.cards{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 52px;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     flex: auto;
     padding: 30px 0;
+    box-sizing: border-box;
 }
 
 .info {
