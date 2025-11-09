@@ -88,7 +88,9 @@ a {
 }
 
 .hero-container {
-    width: 500px;
+    width: 500px;          
+    padding: 0 24px;         /* keeps padding on the sides */
+    box-sizing: border-box;
 }
 
 .hero-container p {
