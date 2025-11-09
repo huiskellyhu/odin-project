@@ -1,3 +1,8 @@
+/* Notes for the future:
+    Make container class more resuable 
+    to better organize the html */
+
+
 body {
     font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0;
@@ -179,4 +184,36 @@ button {
     display: flex;
     justify-content: center;
     padding: 60px 0;
+    width: 100%;
+
+    margin: 0 auto;          /* centers the content */
+    padding: 60px 24px;         /* keeps padding on the sides */
+    box-sizing: border-box;  /* ensures padding doesn’t increase total width */
 }
+
+.action-box {
+    
+    background-color: #3882F6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 52px;
+    padding: 45px 80px;
+    flex: 0 1 auto;
+    border-radius: 12px;
+}
+
+.action-text-big {
+    color: white;
+    font-weight: 900;
+}
+
+.action-text-small{
+    color: white;
+}
+
+.action-signup button {
+    border: 2px solid white;
+    font-weight: 900;
+}
+
