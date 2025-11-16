@@ -18,37 +18,52 @@ function getHumanChoice(){
 }
 
 
-// play one round
-function playRound(humanChoice, computerChoice){
-    // case-insensitive humanChoice
-    let lowerHumanChoice = humanChoice.toLowerCase();
-    let lowerComputerChoice = computerChoice.toLowerCase();
+// play whole game
+function playGame(){
+    // function to play one round
+    function playRound(humanChoice, computerChoice){
+        // case-insensitive humanChoice
+        let lowerHumanChoice = humanChoice.toLowerCase();
+        let lowerComputerChoice = computerChoice.toLowerCase();
 
-    // hold winning announcement
-    let announcement = "";
+        // hold winning announcement
+        let announcement = "";
 
-    if (lowerHumanChoice == lowerComputerChoice){
-        console.log("Tie!");
-    } else if ((lowerHumanChoice == "rock" && lowerComputerChoice == "scissors") || 
-               (lowerHumanChoice == "paper" && lowerComputerChoice == "rock")     ||
-               (lowerHumanChoice == "scissors" && lowerComputerChoice == "paper")) {
-                announcement = `You win! ${humanChoice} beats ${computerChoice}.`;
-                humanScore++;
-            }
-    else {
-        announcement = `You lose! ${computerChoice} beats ${humanChoice}.`;
-        computerScore++;
+        if (lowerHumanChoice == lowerComputerChoice){
+            console.log("Tie!");
+            return;
+        } else if ((lowerHumanChoice == "rock" && lowerComputerChoice == "scissors") || 
+                (lowerHumanChoice == "paper" && lowerComputerChoice == "rock")     ||
+                (lowerHumanChoice == "scissors" && lowerComputerChoice == "paper")) {
+                    announcement = `You win! ${humanChoice} beats ${computerChoice}.`;
+                    humanScore++;
+                }
+        else {
+            announcement = `You lose! ${computerChoice} beats ${humanChoice}.`;
+            computerScore++;
+        }
+
+        // display announcement
+        console.log(announcement);
+    }
+    
+    let humanScore = 0;
+    let computerScore = 0;
+
+    // play 5 rounds
+    for (let i=0; i<5; i++){
+        let human = getHumanChoice();
+        let computer = getComputerChoice();
+
+        playRound(human, computer);
     }
 
-    // display announcement
-    console.log(announcement);
+    // overall winner announcement
+    if (humanScore == computerScore){
+        console.log("It's a tie!");
+    } else {
+        console.log(`${humanScore > computerScore ? "You" : "Computer"} won the game!`);
+    }
 }
 
-
-let humanScore = 0;
-let computerScore = 0;
-
-human = getHumanChoice();
-computer = getComputerChoice();
-
-playRound(human, computer);
+playGame();
