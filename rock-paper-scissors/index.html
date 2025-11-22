@@ -2,10 +2,22 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <script src="rps.js"></script>
+        <script src="rps.js" defer></script>
         <title>Rock Paper Scissors!</title>
     </head>
     <body>
-        <h1>Play the game in the console!</h1>
+        <h1>Before: Play the game in the console!</h1>
+        <h1>Now: Play the game here!</h1>
+
+        <div id="user-selection">
+            <button id="user-rock">Rock</button>
+            <button id="user-paper">Paper</button>
+            <button id="user-scissors">Scissors</button>
+        </div>
+
+        <div id="result">
+            <p> Round Result: <span id="announcement"> </span></p>
+            <p> Score: <span id="score"> You: 0, Computer: 0</span></p>
+        </div>
     </body>
 </html>
