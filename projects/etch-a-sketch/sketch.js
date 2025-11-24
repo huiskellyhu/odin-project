@@ -9,7 +9,7 @@ function addGrid(size) {
         for (let i = 0; i < size; i++) {
             let newBox = document.createElement("div");
             newBox.classList = "square";
-            newBox.textContent = "temp";
+            newBox.textContent = ".";
             newRow.appendChild(newBox);
         }
 
@@ -21,9 +21,20 @@ function addGrid(size) {
     }
 }
 
+function resetGrid(){
+    const gridContainer = document.getElementById("grid-box");
+    gridContainer.innerHTML = '';
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-    addGrid(5);
-    // TODO: make boxes the same size!
+    const inputSubmit = document.getElementById("input-submit");
+    inputSubmit.addEventListener("click", function() {
+        resetGrid();
+        const inputSize = document.getElementById("input-size");
+        let size = parseInt(inputSize.value);
+        addGrid(size);
+
+        // add size check !! [1,100]
+    });
 });
 

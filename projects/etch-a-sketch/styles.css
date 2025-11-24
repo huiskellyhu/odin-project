@@ -1,10 +1,20 @@
 body {
     display: block;
     height: 100vh;
+    padding: 24px;
 }
 
-header {
+header, footer {
     text-align: center;
+}
+
+main {
+   max-width: 960px;
+   margin: 0 auto;
+}
+
+.input-box {
+    margin-bottom: 20px;
 }
 
 .container {
@@ -13,7 +23,6 @@ header {
     border: 2px solid black;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 .row {
@@ -24,4 +33,5 @@ header {
 .square {
     border: 2px solid red;
     flex: 1;
+    aspect-ratio: 1 / 1;
 }
