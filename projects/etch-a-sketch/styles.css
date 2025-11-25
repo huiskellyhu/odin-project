@@ -27,11 +27,17 @@ main {
 
 .row {
     display: flex;
-    border: 2px solid grey;
+    border: 1px solid black;
 }
 
 .square {
-    border: 2px solid red;
+    border: 1px solid black;
     flex: 1;
     aspect-ratio: 1 / 1;
+    cursor: pointer;
+    background-color: white;
+}
+
+.square.active {
+    background-color: red;
 }

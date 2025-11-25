@@ -7,9 +7,8 @@ function addGrid(size) {
 
 
         for (let i = 0; i < size; i++) {
-            let newBox = document.createElement("div");
+            let newBox = document.createElement("button");
             newBox.classList = "square";
-            newBox.textContent = ".";
             newRow.appendChild(newBox);
         }
 
@@ -19,6 +18,18 @@ function addGrid(size) {
     for (let i = 0; i < size; i++) {
         createRow();
     }
+
+    // button function
+    const buttons = document.querySelectorAll('.square');
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            if(button.classList.contains('active')){
+                button.classList.remove('active');
+            } else {
+                button.classList.add('active');
+            }
+        })
+    });
 }
 
 function resetGrid(){
@@ -27,6 +38,7 @@ function resetGrid(){
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // accept input size
     const inputSubmit = document.getElementById("input-submit");
     inputSubmit.addEventListener("click", function() {
         resetGrid();
