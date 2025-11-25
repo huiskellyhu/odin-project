@@ -9,7 +9,7 @@ header, footer {
 }
 
 main {
-   
+   /* add max-width: 960px for viewability */
    margin: 0 auto;
 }
 
@@ -19,7 +19,6 @@ main {
 
 .container {
     flex-grow: 1;
-    
     border: 2px solid black;
     display: flex;
     flex-direction: column;
