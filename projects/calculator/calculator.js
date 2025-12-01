@@ -1,41 +1,32 @@
-function add(a, b) {
-    return a + b;
-}
-
-function subtract(a, b) {
-    return a - b;
-}
-
-function multiply(a, b) {
-    return a * b;
-}
-
-function divide(a, b) {
-    return a / b;
-}
+const OPERATORS = {
+    '+': (a, b) => a + b,
+    '-': (a, b) => a - b,
+    'x': (a, b) => a * b,
+    '/': (a, b) => a / b
+};
 
 function operate(op, a, b){
-    switch (op){
-        case '+':
-            return add(a,b);
-        case '-':
-            return subtract(a,b);
-        case 'x':
-            return multiply(a,b);
-        case '/':
-            return divide(a,b);
-    }
+    return OPERATORS[op]?.(a, b);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     let firstNum = '';
     let secNum = '';
-    let operator;
-
+    let operator = null;
     let choseOperator = false;
 
     const result = document.getElementById('result');
 
+    const resetAll = () => {
+        firstNum = '';
+        secNum = '';
+        operator = null;
+        choseOperator = false;
+        result.textContent = "Result: ";
+    }
+
+
+    // handles numbers
     const numbersContainer = document.getElementById('numbers');
     numbersContainer.addEventListener('click', (event) => {
         const value = event.target.dataset.number;
@@ -44,59 +35,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if(!choseOperator){
             firstNum += value;
-            console.log("First Number:", firstNum);
             result.textContent += value;
         } else {
             secNum += value;
-            console.log("Sec Number:", secNum);
             result.textContent += value;
         }
     });
 
+    // handles operators
     const operatorSelect = document.getElementById('operators');
     operatorSelect.addEventListener('click', (event) => {
         const op = event.target.textContent.trim();
         if (!['+', '-', 'x', '/', '=', 'C/E'].includes(op)) return;
 
-        // if select '=' without firstNum && secNum -- do nothing
+        // clear
+        if (op === 'C/E'){
+            return resetAll();
+        }
+    
+        // '=' without both numbers
         if (op === '=' && (firstNum === '' || secNum === '')){
             return;
         }
-
-        if (op === 'C/E'){
-            firstNum = '';
-            secNum = ''
-            operator = '';
-            choseOperator = false;
-            result.textContent = "Result: ";
-            return;
-        }
-
-        // if no operator previously chosen -- set to true and proceed
-        if(!choseOperator){
-            choseOperator = true;
         
         // if firstNum && secNum -- condense first and proceed
-        } else if (secNum != ''){
+        if (choseOperator && secNum != ''){
             firstNum = operate(operator, Number(firstNum), Number(secNum));
             secNum = '';
-            console.log('cleared');
             result.textContent = "Result: " + firstNum;
-    
-        // if secNum == '' -- do nothing
-        } else {
-            return;
+        } else if (operator != null){
+            return; // handles multiple operator selection
         }
         
         // general handling for operator
         operator = op;
-        console.log("Chose operator:", operator);
         
         // display new operation if not '=', don't allow condense
-        if(op != '='){
-            result.textContent += op;
-        } else {
+        if(op === '='){
             choseOperator = false;
+            operator = null;
+        } else {
+            choseOperator = true;
+            result.textContent += op;
         }
     })
 });
