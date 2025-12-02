@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let secNum = '';
     let operator = null;
     let choseOperator = false;
+    let pressedEqual = false;
 
     const result = document.getElementById('result');
 
@@ -37,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // operator chosen, modify secNum
         if(!choseOperator){
             // handle leading '0'
-            if(firstNum == "0"){
+            if(firstNum == "0" || pressedEqual){
                 firstNum = '';
                 result.textContent = '';
             }
@@ -80,9 +81,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // display new operation if not '=', don't allow condense
         if(op === '='){
             choseOperator = false;
+            pressedEqual = true;
             operator = null;
         } else {
             choseOperator = true;
+            pressedEqual = false;
             result.textContent += op;
         }
     })
