@@ -12,21 +12,43 @@ body {
     align-items: center;
 }
 
-.header,
 .calc-body {
     border: 2px solid black;
     padding: 16px;
     background: #fff;
     margin-bottom: 12px;
     max-width: 100%;
+    border-radius: 8px;
 }
 
 .display {
-    border: 2px solid red;
+    border: 2px solid grey;
     padding: 8px;
     text-align: right;
+    border-radius: 8px;
+    margin-bottom: 12px;
 }
 
 .input-board {
-    border: 2px solid grey;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: row;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
 }
+
+#numbers , #operators{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+}
+
+#numbers {
+    
+    font-size: 180%;
+}
+
+
