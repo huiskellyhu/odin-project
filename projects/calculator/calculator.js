@@ -10,7 +10,7 @@ function operate(op, a, b){
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    let firstNum = '';
+    let firstNum = "0";
     let secNum = '';
     let operator = null;
     let choseOperator = false;
@@ -18,11 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const result = document.getElementById('result');
 
     const resetAll = () => {
-        firstNum = '';
+        firstNum = "0";
         secNum = '';
         operator = null;
         choseOperator = false;
-        result.textContent = "Result: ";
+        result.textContent = "0";
     }
 
 
@@ -32,8 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const value = event.target.dataset.number;
 
         if (!value) return;
-
+        
+        // no operator chosen, modify firstNum
+        // operator chosen, modify secNum
         if(!choseOperator){
+            // handle leading '0'
+            if(firstNum == "0"){
+                firstNum = '';
+                result.textContent = '';
+            }
             firstNum += value;
             result.textContent += value;
         } else {
@@ -62,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (choseOperator && secNum != ''){
             firstNum = operate(operator, Number(firstNum), Number(secNum));
             secNum = '';
-            result.textContent = "Result: " + firstNum;
+            result.textContent = firstNum;
         } else if (operator != null){
             return; // handles multiple operator selection
         }
